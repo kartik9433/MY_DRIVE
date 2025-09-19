@@ -2,6 +2,7 @@ package com.kartik.DriveProject.controller;
 
 import com.kartik.DriveProject.entity.FileEntity;
 import com.kartik.DriveProject.service.FileService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +16,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/apis/files")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "${FRONTEND_URL}")
 public class FileController {
+
+    @Value("${FRONTEND_URL}")
+    private String frontendUrl;
 
     private final FileService fileService;
 
