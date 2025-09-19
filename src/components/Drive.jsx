@@ -15,7 +15,7 @@ function Drive() {
 
   const fetchFiles = async () => {
     try {
-      const response = await fetch("http://localhost:8080/apis/files/list");
+      const response = await fetch(`http://${process.env.REACT_APP_API_URL}/apis/files/list`);
       if (response.ok) {
         const fileList = await response.json();
         setFiles(fileList);
@@ -38,7 +38,7 @@ function Drive() {
     formData.append("file", file);
 
     try {
-      const response = await fetch("http://localhost:8080/apis/files/upload", {
+      const response = await fetch(`http://${process.env.REACT_APP_API_URL}/apis/files/upload`, {
         method: "POST",
         body: formData,
       });
@@ -70,7 +70,7 @@ function Drive() {
 
   const downloadFile = async (file) => {
     try {
-      const response = await fetch(`http://localhost:8080/apis/files/download/${file.id}`, {
+      const response = await fetch(`http://${process.env.REACT_APP_API_URL}/apis/files/download/${file.id}`, {
         method: "GET",
       });
       if (!response.ok) {
@@ -93,7 +93,7 @@ function Drive() {
 
   const deleteFile = async (file) => {
     try {
-      const response = await fetch(`http://localhost:8080/apis/files/delete/${file.id}`, {
+      const response = await fetch(`http://${process.env.REACT_APP_API_URL}/apis/files/delete/${file.id}`, {
         method: "DELETE",
       });
 
