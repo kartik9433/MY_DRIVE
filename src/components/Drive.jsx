@@ -16,8 +16,8 @@ function Drive() {
   const fetchFiles = async () => {
     try {
       const response = await fetch(`${process.env.REACT_APP_API_URL}/apis/files/list`);
+      console.log(process.env.REACT_APP_API_URL);
       console.log(response);
-      console.log(response.json);
       if (response.ok) {
         const fileList = await response.json();
         setFiles(fileList);
